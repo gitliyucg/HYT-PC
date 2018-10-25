@@ -1,0 +1,85 @@
+<div id="loading" *ngIf="show">
+  <div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+    <p>图片正在上传，请稍后...</p>
+  </div>
+</div>
+<app-header></app-header>
+<div class="body-content">
+  <h2>充值</h2>
+  <hr />
+  <form [formGroup]="formModel">
+    <div class="form-horizontal">
+      <div class="form-group" [class.has-error]="(formModel.get('Moneys').touched || formModel.get('Moneys').dirty) && formModel.get('Moneys').invalid">
+        <label class="control-label col-md-2">充值金额</label>
+        <div class="col-md-2">
+          <input class="form-control text-box single-line" formControlName="Moneys" type="number" min="1"/>
+          <span class="field-validation-valid text-danger" *ngIf="formModel.get('Moneys').dirty && formModel.get('Moneys').hasError('min')">最小充值{{mins}}元</span>
+          <span class="field-validation-valid text-danger" *ngIf="formModel.get('Moneys').dirty && formModel.get('Moneys').hasError('max')">最大充值{{maxs}}元</span>
+        </div>
+        <div class="col-md-2">
+          <span class="form-vm text-danger">当前币值 {{bizhi}}元/枚</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2">汇款小票</label>
+        <div class="col-md-10">
+          <input type="file" ng2FileSelect [uploader]="uploader" (change)="file($event)"  class="file"/>
+          <span class="field-validation-valid text-danger" *ngIf="imgErr">图片错误</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <button class="btn btn-success" (click)="onSubmit($event)" [disabled]="formModel.invalid || imgErr || btnOn">充值</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <tr class="row">
+      <th class="col-xs-2">
+        充值日期
+      </th>
+      <th class="col-xs-2">
+        处理状态
+      </th>
+      <th class="col-xs-2">
+        凭证
+      </th>
+      <th class="col-xs-2">
+        充值金额
+      </th>
+      <th class="col-xs-2">
+        处理结果
+      </th>
+      <th class="col-xs-2">
+        处理时间
+      </th>
+    </tr>
+
+    <tr class="row" *ngFor="let x of model; let i = index">
+      <td>{{GetTimes(x.Times)}}</td>
+      <td>{{x.State}}</td>
+      <td><img src="{{getImg(x.Pic)}}" alt="" height="80"></td>
+      <td>{{x.Moneys}}</td>
+      <td>{{x.Mess}}</td>
+      <td>{{GetTimes(x.PayTime)}}</td>
+    </tr>
+
+  </table>
+  <div class="pagebar">
+    <div class="page">
+      <app-pagination conf="Pagination"></app-pagination>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>

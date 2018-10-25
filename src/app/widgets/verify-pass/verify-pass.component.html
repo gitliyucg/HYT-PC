@@ -1,0 +1,23 @@
+<div class="pass" *ngIf="vpconfig.show">
+  <div class="passmain">
+    <div class="head">二级密码</div>
+    <div class="input">
+      <div class="ul" (click)="ulclick()">
+           <input type="password" maxlength="1" class="form-control" autocomplete="new-password" (input)="set($event.target.value,0)" (keydown)="kdown($event)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="new-password" (input)="set($event.target.value,1)" (keydown)="kdown($event)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="new-password" (input)="set($event.target.value,2)" (keydown)="kdown($event)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="new-password" (input)="set($event.target.value,3)" (keydown)="kdown($event)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="new-password" (input)="set($event.target.value,4)" (keydown)="kdown($event)"><!--
+        --><input type="password" maxlength="1" class="form-control" disabled="disabled" autocomplete="new-password" (input)="set($event.target.value,5)" (keydown)="kdown($event)">
+      </div>
+
+    </div>
+    <div class="foot">
+      <div>
+        <button class="btn btn-default" (click)="passClose()">取消</button>
+        <button class="btn btn-confirm" (click)="validPass($event)">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+

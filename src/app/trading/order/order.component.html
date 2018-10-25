@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div id="Trading">
+  <div class="sidebar">
+    <div><a routerLink="/trading/index" routerLinkActive="sideon">交易大厅</a></div>
+    <div><a routerLink="/trading/sell" routerLinkActive="sideon">卖出订单</a></div>
+    <div><a routerLink="/trading/orders" routerLinkActive="sideon">买入订单</a></div>
+    <div><a routerLink="/trading/issue" routerLinkActive="sideon">发布挂售</a></div>
+  </div>
+  <div class="body-content">
+    <h2>买入订单</h2>
+    <br />
+    <table class="table">
+      <tr class="row trad-tab-head">
+        <th class="col-xs">
+          订单编号
+        </th>
+        <th class="col-xs">
+          卖家
+        </th>
+        <th class="col-xs">
+          买入数量
+        </th>
+        <th class="col-xs">
+          单价
+        </th>
+        <th class="col-xs">
+          总价
+        </th>
+        <th class="col-xs">
+          买入时间
+        </th>
+        <th class="col-xs">
+          支付时间
+        </th>
+        <th class="col-xs">
+          完成时间
+        </th>
+        <th class="col-xs text-right">
+          操作
+        </th>
+      </tr>
+
+      <tr class="row" *ngFor="let x of model; let i = index">
+        <td>{{getID(x.ID)}}</td>
+        <td>{{x.UserName}}</td>
+        <td>{{x.Numbers}}</td>
+        <td>{{x.Price}}</td>
+        <td>{{x.Cost}}</td>
+        <td title="{{x.Times}}">{{GetTimes(x.Times)}}</td>
+        <td title="{{x.PayTime}}">{{GetTimes(x.PayTime)}}</td>
+        <td title="{{x.EndTime}}">{{GetTimes(x.EndTime)}}</td>
+        <td class="text-right">
+          <a class="btn btn-info" routerLink="/trading/orderview/lml{{x.ID}}" *ngIf="x.States==0">付款</a>
+          <span *ngIf="x.States==1">超时</span>
+          <span *ngIf="x.States==2">已取消</span>
+          <a routerLink="/trading/orderview/lml{{x.ID}}" *ngIf="x.States==3">等待卖家确认</a>
+          <span *ngIf="x.States==4">完成</span>
+        </td>
+      </tr>
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+
+    <app-footer></app-footer>
+  </div>
+</div>
+

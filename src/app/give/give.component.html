@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="body-content">
+  <h2>转赠流通HYT</h2>
+  <hr />
+  <form [formGroup]="formModel">
+    <div class="form-horizontal">
+
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-md-2">现有流通HYT</label>
+          <div class="col-md-2">
+            <span class="form-vm">{{HYB}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="(formModel.get('Numbers').touched || formModel.get('Numbers').dirty) && formModel.get('Numbers').invalid">
+        <label class="control-label col-md-2">转赠数量</label>
+        <div class="col-md-2">
+          <input class="form-control text-box single-line" formControlName="Numbers" type="number" min="1" placeholder="枚"/>
+        </div>
+        <div class="col-md-2">
+          <span class="form-vm text-danger">当前币值 {{bizhi}}元/枚</span>
+        </div>
+      </div>
+
+      <div class="form-horizontal" [class.has-error]="formModel.get('who').touched && formModel.get('who').invalid">
+        <div class="form-group">
+          <label class="control-label col-md-2"><span class="text-danger">*</span>转赠会员</label>
+          <div class="col-md-3">
+            <input class="form-control text-box single-line" formControlName="who" placeholder="会员账号"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-md-2"><span class="text-danger">*</span>会员姓名</label>
+        <div class="col-md-3">
+          <input type="text" class="form-control" formControlName="uname">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <button class="btn btn-success" (click)="onSubmit($event)" [disabled]="formModel.invalid || btnOn">确定</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <tr class="row head">
+      <th class="col-xs-2">
+        记录日期
+      </th>
+      <th class="col-xs-1">
+        交易方
+      </th>
+      <th class="col-xs-2">
+        账单说明
+      </th>
+      <th class="col-xs-1">
+        币值
+      </th>
+      <th class="col-xs-2">
+        收入
+      </th>
+      <th class="col-xs-1">
+        支出
+      </th>
+      <th class="col-xs-1">
+        余额
+      </th>
+      <th class="col-xs">
+        货币类型
+      </th>
+    </tr>
+
+    <tr class="row" *ngFor="let x of model; let i = index">
+      <td>{{GetTimes(x.Times)}}</td>
+      <td>{{x.Who}}</td>
+      <td>{{x.Reason}}</td>
+      <td>{{x.Bi}}</td>
+      <td><span [class.text-success]="x.ShouRu > 0" [class.lead]="x.ShouRu > 0">{{x.ShouRu}}</span></td>
+      <td><span [class.text-danger]="x.ZhiChu">{{x.ZhiChu}}</span></td>
+      <td>{{x.Balance}}</td>
+      <td>{{x.MoneyType}}</td>
+    </tr>
+
+  </table>
+  <div class="pagebar">
+    <div class="page">
+      <app-pagination conf="Pagination"></app-pagination>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>
+<app-verify-pass conf="Vpconfig" (result)="result($event)"></app-verify-pass>

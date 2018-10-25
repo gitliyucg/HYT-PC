@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="body-content">
+  <h2>邀请好友</h2>
+  <hr />
+
+  <div style="margin: 0px auto; text-align: center;">
+    <ngx-qrcode
+      [qrc-value] ="value"
+      qrc-class = "qrclass"
+      qrc-errorCorrectionLevel = "L">
+    </ngx-qrcode>
+    <p><input type="text" class="form-control" value="{{value}}" id="copy" readonly="readonly">
+      <button class="btn btn-success" (click)="copy()" ngxClipboard [cbContent]="value">复制链接</button></p>
+  </div>
+
+  <app-footer></app-footer>
+</div>

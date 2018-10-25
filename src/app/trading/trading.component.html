@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div id="Trading">
+  <div class="sidebar">
+    <div><a routerLink="/trading" routerLinkActive="sideon">交易大厅</a></div>
+    <div><a routerLink="/trading/sell" routerLinkActive="sideon">卖出订单</a></div>
+    <div><a routerLink="/trading/orders" routerLinkActive="sideon">买入订单</a></div>
+    <div><a routerLink="/trading/issue" routerLinkActive="sideon">发布挂售</a></div>
+  </div>
+  <div class="body-content">
+    <h2>交易中心</h2>
+    <br />
+    <table class="table">
+      <tr class="row trad-tab-head">
+        <th class="col-xs">
+          卖家
+        </th>
+        <th class="col-xs">
+          数量
+        </th>
+        <th class="col-xs">
+          限额
+        </th>
+        <th class="col-xs">
+          单价
+        </th>
+        <th class="col-xs">
+          交易方式
+        </th>
+        <th class="col-xs text-right">
+          操作
+        </th>
+      </tr>
+
+      <tr class="row" *ngFor="let x of model; let i = index">
+        <td>{{x.UserName}}</td>
+        <td>{{x.Numbers}} <small>HYT</small></td>
+        <td>{{x.Mins}} - {{x.Maxs}} RMB</td>
+        <td><strong class="text-success" style="font-size: 16px;">{{x.Price}} <small>RMB</small></strong></td>
+        <td>银行转账</td>
+        <td class="text-right">
+          <a class="btn btn-info" routerLink="/trading/buy/{{x.ID}}">购买</a>
+        </td>
+      </tr>
+    </table>
+
+    <div class="pagebar">
+      <div class="page">
+        <app-pagination conf="Pagination"></app-pagination>
+      </div>
+    </div>
+
+
+    <app-footer></app-footer>
+  </div>
+</div>
+

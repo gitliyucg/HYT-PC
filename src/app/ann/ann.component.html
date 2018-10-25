@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="body-content">
+  <h2>公告</h2>
+  <hr />
+
+  <table class="table">
+
+    <tr class="row" *ngFor="let x of model; let i = index">
+      <td class="col-xs-10"><a routerLink="view/{{x.ID}}">{{x.Title}}</a></td>
+      <td class="col-xs-2">{{GetTimes(x.Times)}}</td>
+    </tr>
+
+  </table>
+  <div class="pagebar">
+    <div class="page">
+      <app-pagination conf="Pagination"></app-pagination>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>

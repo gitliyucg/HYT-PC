@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="body-content">
+  <h2>储值记录</h2>
+  <hr />
+
+  <table class="table">
+    <tr class="row">
+      <th class="col-md-2">
+        记录日期
+      </th>
+      <th class="col-md">
+        充值金额
+      </th>
+      <th class="col-md">
+        当时币值
+      </th>
+      <th class="col-md">
+        存储HYT
+      </th>
+      <th class="col-md">
+        剩余存储
+      </th>
+      <th class="col-md">
+        状态
+      </th>
+      <th class="col-xs-2">
+        结束时间
+      </th>
+    </tr>
+
+    <tr class="row" *ngFor="let x of model; let i = index">
+      <td>{{GetTimes(x.Times)}}</td>
+      <td>{{x.Moneys}}</td>
+      <td>{{x.Bi}}</td>
+      <td>{{x.Moneys / x.Bi | number:'1.0-4'}}</td>
+      <td>{{x.HYT | number:'1.0-4'}}</td>
+      <td>{{GetState(x.State)}}</td>
+      <td>{{GetTimes(x.EndTime)}}</td>
+    </tr>
+
+  </table>
+  <div class="pagebar">
+    <div class="page">
+      <app-pagination conf="Pagination"></app-pagination>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>

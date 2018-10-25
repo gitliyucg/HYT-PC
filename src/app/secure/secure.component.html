@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="body-content">
+  <h2>账号安全</h2>
+  <hr />
+  <div class="secure-ttl">用户信息</div>
+  <div class="userinfo">
+
+    <div><span>会员账号：</span>{{userid}}</div>
+    <div><span>会员姓名：</span>{{name}}</div>
+    <div><span>上次登录：</span>{{lasttime}}</div>
+  </div>
+
+  <div class="secure-ttl">安全信息</div>
+  <ul class="secure">
+    <li>
+      <div>登录密码：</div>
+      <div>安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过6位的密码。</div>
+      <div><a routerLink="/editpass">修改</a></div>
+    </li>
+    <li>
+      <div>二级密码：</div>
+      <div>用于保护交易安全，安全性高的密码可以使帐号更安全。建议您定期更换密码</div>
+      <div><a routerLink="/secure/second">修改</a></div>
+    </li>
+    <li>
+      <div>手机绑定：</div>
+      <div>您已绑定了手机 {{phone}} [您的手机为安全手机，可以找回密码，但不能用于登录]</div>
+      <div></div>
+    </li>
+    <li>
+      <div>基本资料：</div>
+      <div>包含身份证、银行卡、开户行等</div>
+      <div><a routerLink="/secure/info">修改</a></div>
+    </li>
+  </ul>
+
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div id="Trading">
+  <div class="sidebar">
+    <div><a routerLink="/trading/index" routerLinkActive="sideon">交易大厅</a></div>
+    <div><a routerLink="/trading/sell" routerLinkActive="sideon">卖出订单</a></div>
+    <div><a routerLink="/trading/orders" class="sideon">买入订单</a></div>
+    <div><a routerLink="/trading/issue" routerLinkActive="sideon">发布挂售</a></div>
+  </div>
+  <div class="body-content" *ngIf="view">
+    <h2>您向{{bank.UserName}}卖家购买{{model.Numbers}} 枚HYT</h2>
+    <br />
+    <div class="orderview-h3">单价：{{model.Price}} 元</div>
+    <div class="orderview-h3">总价：<span class="text-success">{{model.Cost}} 元</span></div>
+    <hr />
+    <h3>卖家收款信息</h3>
+    <div>开户行：{{bank.Bank}}</div>
+    <div>开户名：{{bank.BankUName}}</div>
+    <div>银行卡：{{bank.BankNumber}}</div>
+    <br />
+    <div class="pay" *ngIf="model.States==0">
+      <div class="fs16">待支付，请于<span class="text-danger">{{minute}}分{{second}}秒</span>内向{{bank.UserName}}卖家支付<span class="text-success">{{model.Cost}}元</span>，订单号：{{'lml' + ID}}</div>
+      <button class="btn btn-lg btn-primary" (click)="pay()">标记为已付款</button> <span class="arrow-left"></span><span class="notice">付款成功后，请点击按钮告知卖家</span>
+    </div>
+    <div class="pay" *ngIf="model.States==3">
+      <div class="fs16">付款时间：{{model.PayTime.split('T')[0] + ' ' + model.PayTime.split('T')[1]}}</div>
+    </div>
+    <br />
+    <div class="text-muted">
+      <p>提醒：</p>
+      <p>1.交易过程中卖方出售的HYT由系统托管保护。</p>
+      <p>2.请在规定时间内完成付款，并务必点击“标记为已付款”，卖方确认收款后，系统会将您购买的HYT划转到您的账户。</p>
+      <p>3.请在交易完成前，保留好转账证明。如果在交易过程中遇到问题，可申请客服介入。</p>
+      <p>4.如果账户内出现多次超时未付款订单，可能会被视为恶意操作，系统有权决定冻结账户或扣除恶意操作所造成的损失。</p>
+    </div>
+
+    <button class="btn btn-link" (click)="cancel()" *ngIf="model.States==0">取消订单</button>
+
+    <app-footer></app-footer>
+  </div>
+</div>
+

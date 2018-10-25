@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="body-content">
+  <h2>修改二级密码</h2>
+  <hr />
+  <form [formGroup]="formModel">
+    <div class="form-horizontal">
+
+
+      <div class="form-group" [class.has-error]="formModel.get('oldPass').touched && formModel.get('oldPass').invalid">
+        <label class="control-label col-md-2">原二级密码</label>
+        <div class="col-md-3">
+          <input class="form-control text-box single-line" formControlName="oldPass" type="password" placeholder="六位数字"/>
+          <span class="field-validation-valid text-danger" *ngIf="formModel.get('oldPass').touched && formModel.get('oldPass').invalid">二级密码为六位数字</span>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('PassWord').touched && formModel.get('PassWord').invalid">
+        <label class="control-label col-md-2">新二级密码</label>
+        <div class="col-md-3">
+          <input class="form-control text-box single-line" formControlName="PassWord" type="password" placeholder="六位数字"/>
+          <span class="field-validation-valid text-danger" *ngIf="formModel.get('PassWord').touched && formModel.get('PassWord').invalid">二级密码为六位数字</span>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-error]="formModel.get('Confirm').touched && formModel.get('Confirm').invalid">
+        <label class="control-label col-md-2">确认密码</label>
+        <div class="col-md-3">
+          <input class="form-control text-box single-line" formControlName="Confirm" type="password" placeholder="六位数字"/>
+          <span class="field-validation-valid text-danger" *ngIf="formModel.get('Confirm').touched && formModel.get('Confirm').invalid">两次密码不一致</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+          <button class="btn btn-success" (click)="onSubmit($event)" [disabled]="formModel.invalid">修改</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div>
+    <a routerLink="/secure">返回</a>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>

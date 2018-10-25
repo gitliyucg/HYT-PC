@@ -1,0 +1,15 @@
+<div class="back">
+  <div id="login">
+    <h2><span>会员系统</span></h2>
+    <p class="Eng">MEMBER SYSTEM</p>
+    <div class="login-wrap">
+      <form class="butouming" [formGroup]="formModel">
+        <div class="login-wrap-input">
+          <input type="text" placeholder="用户名" formControlName="u" autocomplete="off">
+          <input type="password" placeholder="密码" formControlName="p" autocomplete="off">
+        </div>
+        <button (click)="signIn($event)" (keydown)="signIn($event)" id="sign" [disabled]="formModel.invalid">登录</button>
+      </form>
+    </div>
+  </div>
+</div>

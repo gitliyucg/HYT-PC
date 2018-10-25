@@ -1,0 +1,631 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: none
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+i {
+  font-style: normal;
+}
+
+.form-vm {
+  padding-top: 7px;
+  display: block;
+}
+
+ol, ul, menu {
+  list-style: none;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/*-----------------------------功能性----------------------------------------------------*/
+.vm {
+  vertical-align: middle;
+}
+
+.clr {
+  clear: both;
+}
+
+.float-right {
+  float: right;
+}
+
+/*------------------------------color---------------------------------------------------*/
+$sidebarBigColor: #FFFFFF;
+$sidebarHoverColor: #00abff;
+$sidebarSmallColor: #FFFFFF;
+$sidebarbgcolor: #444444;
+$sidebarlibgcolor: #2A2A2A;
+$fontColor: #FFFFFF;
+$bread: #666666;
+$breadHover: #444444;
+
+/********************************Users**********************************************/
+/* Set padding to keep content from hitting the edges */
+
+html {
+  font-size: 62.5%;
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+  font-family: Roboto, 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 1.4rem;
+}
+
+/*menu菜单*/
+
+#Header {
+  clear: both;
+  background: #333333;
+  background-image: linear-gradient(to top, #3F3F3F 0%, #222222 100%);
+}
+
+#Header h1 {
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+#Header h1 a {
+  color: #FFFFFF;
+  font-size: 3.0rem;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+#Header h1 i {
+  cursor: pointer;
+  margin-left: 16px;
+  font-size: 2.2rem;
+  color: white;
+}
+
+#User_nav {
+  position: relative;
+  float: right;
+  margin: 1rem 1.5rem 0 0;
+  z-index: 10;
+}
+
+#User_nav ul li {
+  float: left;
+  & label {
+    border-radius: 5px 0 0 5px;
+  }
+;
+  &:last-child a {
+    border-radius: 0px 5px 5px 0px;
+  }
+;
+  &:nth-child(1) a::before {
+    content: "技术支持";
+    font-size: 1.4rem;
+  }
+  label, a {
+    color: $sidebarSmallColor;
+    display: block;
+    padding: 5px 20px;
+    background: #363636;
+    cursor: pointer;
+    border-top: 1px solid #999999;
+    border-left: 1px solid #262626;
+    border-right: 1px solid #262626;
+    border-right: 1px solid #262626;
+    &:hover {
+      color: #FFFFFF;
+      background: #222;
+    }
+  }
+}
+
+#User_nav .dropdown.on {
+  color: #FFFFFF;
+  background: #222;
+  & ~ ul {
+    display: block;
+  }
+}
+
+#User_nav .dropdown + ul {
+  display: none;
+  background: #fff;
+  min-width: 120px;
+  position: absolute;
+  z-index: 11;
+  border-radius: 5px;
+  padding: 5px 0;
+  margin-top: 3px;
+  &:before {
+    position: absolute;
+    display: inline-block;
+    top: -7px;
+    left: 20px;
+    content: "";
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+  }
+;
+  li {
+    float: none;
+    display: block;
+    a {
+      background: inherit;
+      border: none;
+      color: #333;
+      padding: 5px 20px;
+      margin: 0;
+    }
+  ;
+    a:hover {
+      color: #FFF;
+      background: linear-gradient(to top, #555555 0%, #222222 100%);
+      background: #222222;
+      border: none;
+      border-radius: 0;
+    }
+  ;
+  }
+}
+
+#wraps {
+  clear: both;
+}
+
+#Sidebar {
+  width: 180px;
+  min-height: calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  float: left;
+  background: $sidebarbgcolor;
+}
+
+#Sidebar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: #F5F5F5;
+}
+
+#Sidebar::-webkit-scrollbar {
+  width: 6px;
+  background: #f5f5f5;
+}
+
+#Sidebar::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+#Sidebar .sidebarFirst {
+  width: 180px;
+  position: relative;
+}
+
+#Sidebar ul li {
+  vertical-align: middle;
+  border-top: 1px solid #4E4E4E;
+  border-bottom: 1px solid #393939;
+  a, label {
+    font-size: 1.6rem;
+    padding: 10px 0px;
+    color: $sidebarBigColor;
+    padding-left: 15px;
+    display: block;
+    cursor: pointer;
+    font-weight: initial;
+  }
+  label i, a i {
+    margin-right: 15px;
+  }
+  label span:before {
+    content: "\e6b8";
+    position: absolute;
+    right: 10px;
+  }
+  label span.active:before {
+    content: "\e6b6";
+  }
+
+  a:hover, a.active, label:hover, label.active, label:hover span, label.active span {
+    color: $sidebarHoverColor;
+  }
+}
+
+#Sidebar ul li ul {
+  display: none;
+  background: $sidebarlibgcolor;
+}
+
+#Sidebar ul li ul li {
+  border: none;
+  border-top: 1px solid #4E4E4E;
+  border-bottom: 1px solid #202020;
+  a {
+    font-size: 1.4rem;
+    color: $sidebarSmallColor;
+    padding-left: 25px;
+  }
+  a:hover, a.active {
+    background: #272727;
+    color: $sidebarHoverColor;
+  }
+}
+
+#Sidebar .side_visible {
+  display: block;
+  border-top: 1px solid #4E4E4E;
+  cursor: pointer;
+  border-bottom: 1px solid #393939;
+  color: $sidebarHoverColor;
+  padding: 10px 0 10px 15px;
+  display: none;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top-color: #FFF;
+  border-bottom-color: #FFF;
+  margin-top: 8px;
+  border-top: 4px solid #FFF;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+  vertical-align: top;
+}
+
+/*menu菜单*/
+
+/*body-conent*/
+
+.body-content {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.body-content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: #ffffff;
+}
+
+.body-content::-webkit-scrollbar {
+  width: 6px;
+  background: #ffffff;
+}
+
+.body-content::-webkit-scrollbar-thumb {
+  background: #cccccc;
+}
+
+.body-content .cont_head {
+  height: 30px;
+  line-height: 30px;
+}
+
+.body-content h2 {
+  font-size: 3rem;
+  line-height: 30px;
+  height: 30px;
+  margin: 10px 0 0px 20px;
+}
+
+/*body-conent*/
+
+.qrclass img {
+  width: 300px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+  white-space: normal;
+}
+
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+  vertical-align: middle;
+}
+
+.table tr {
+  vertical-align: middle !important;
+}
+
+/*分页*/
+.pagination {
+  margin: 20px 0 0 0;
+  padding: 0px;
+  li > span {
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    border-color: #dddddd #dddddd #cccccc;
+    padding: 4px 11px;
+    background: #f5f5f5;
+    cursor: pointer;
+    background-image: linear-gradient(to top, #ffffff, #dadada);
+    &:hover {
+      color: #000000;
+    }
+  ;
+  }
+  li.active span {
+    background-color: #414141 !important;
+    background-image: linear-gradient(to top, #555555, #222222);
+    border-color: #dddddd #dddddd #cccccc;
+    &:hover {
+      border-color: #dddddd #dddddd #cccccc;
+    }
+  ;
+  }
+  li.disabled a {
+    color: #AAAAAA;
+    &:hover {
+      color: #AAAAAA;
+    }
+  ;
+  }
+  li.text {
+    height: 30px;
+    line-height: 30px;
+    padding: 0px 5px;
+  }
+  li.text .num {
+    width: 30px;
+    height: 25px;
+    line-height: 25px;
+  }
+}
+
+/*上传层*/
+#loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .6);
+  z-index: 99999999999;
+}
+
+#loading .spinner {
+  margin: 25% auto;
+  width: 250px;
+  height: 60px;
+  text-align: center;
+  font-size: 10px;
+}
+
+#loading .spinner > div {
+  background-color: white;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+#loading .spinner > p {
+  display: inline-block;
+  width: 200px;
+  font-size: 1.5em;
+  color: white;
+}
+
+#loading .spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+#loading .spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+#loading .spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+#loading .spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+.file, input[type=file] {
+  display: inline-block;
+  padding: 6px 24px 6px 0px;
+}
+
+.input-Sort {
+  width: 60px;
+  margin-right: 10px;
+}
+
+.table .sort {
+}
+
+.table .sort button:nth-child(1) {
+  margin-right: 15px;
+  color: #21afca;
+}
+
+.table .sort button:nth-child(2) {
+  color: #cccc00;
+}
+
+/*交易中心*/
+#Trading{ padding-top: 50px; clear: both; overflow: hidden;}
+#Trading .body-content{ padding: 10px 20px 15px 0px; float: right; width: calc(100vw - 130px); height: calc(100vh - 50px); overflow-y: auto;}
+#Trading .sidebar{ float: left; width: 110px; background: #222; text-align: center; font-size: 16px; height:calc(100vh - 50px); padding-top: 10px;}
+#Trading .sidebar div{ height: 40px; line-height: 40px; vertical-align: middle;}
+#Trading .sidebar div a{ color: #9d9d9d;}
+#Trading .sidebar div a.sideon{ color: #FFFFFF;}
+
+#Trading .trad-tab-head{ border-bottom: 1px solid #dddddd; color: #999999; padding-bottom: 6px;}
+#Trading .trad-tab-head th{ font-weight: normal; border-top: none;}
+#Trading .trad-tab-head .row{ margin: 0px; padding-right: 25px;}
+#Trading .trad-tab-body .row{ padding: 10px 0; vertical-align: middle; position: relative; margin: 0px;}
+/*交易中心*/
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% {
+    -webkit-transform: scaleY(0.4)
+  }
+  20% {
+    -webkit-transform: scaleY(1.0)
+  }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+@media (max-width: 320px) {
+  #User_nav {
+    margin: 1rem 0 0 0;
+  }
+  .table {
+    font-size: 1.4rem;
+  }
+
+}
+
+@media screen and (min-width: 414px) {
+  .form-control {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .body-content {
+    input,
+    select,
+    textarea {
+      max-width: 100%;
+    }
+  }
+  #Header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    width: 100%;
+  }
+  #Header h1 i {
+    display: inline;
+  }
+  #Header h1 a {
+    font-size: 2.2rem;
+  }
+  #User_nav ul li label, #User_nav ul li a {
+    padding: 5px 10px;
+  }
+  #User_nav ul li:nth-child(1) a::before {
+    content: "\e643";
+  }
+
+  #Sidebar {
+    width: 45% !important;
+    height: 100%;
+    position: fixed;
+    left: -45%;
+    z-index: 9;
+  }
+  #Sidebar .side_visible {
+    display: block;
+  }
+  #Sidebar .sidebarFirst {
+    display: block;
+    position: relative;
+    z-index: 9;
+    background: $sidebarbgcolor;
+  }
+  .body-content {
+    margin-left: 0px;
+    border-radius: 0px;
+    margin-top: 0px;
+    padding-left: 0;
+  }
+
+  .searchbar div {
+    float: none;
+    margin-top: 15px;
+  }
+
+  #Sidebar ul li label span:before {
+    content: "\e6b8";
+    position: absolute;
+    right: 20px;
+  }
+
+  .form-group .form-group {
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #loading .spinner {
+    margin: 50% auto !important;
+    width: 250px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+  }
+  .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 8px 2px !important;
+  }
+  #Sidebar {
+    width: 45px;
+  }
+  .form-vm {
+    margin-left: 0px;
+    padding-left: 15px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  #loading .spinner {
+    margin: 65% auto !important;
+    width: 250px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+  }
+}
